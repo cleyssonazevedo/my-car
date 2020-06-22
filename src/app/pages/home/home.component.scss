@@ -1,0 +1,92 @@
+.mini-container {
+    max-width: 1140px;
+    margin: auto;
+}
+
+.carousel {
+    position: relative;
+    
+    .btn-explore {
+        z-index: 9;
+        width: 250px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.3);
+        font-weight: 300;
+        font-size: 14px;
+    
+        letter-spacing: 3px;
+
+        appearance: none;
+        border: none;
+        color: white;
+
+        &:focus,
+        &:hover,
+        &:active {
+            border: none;
+            text-decoration: none;
+            appearance: none;
+            outline: none;
+        }
+
+        &::after {
+            content: '';
+            display: inline-block;
+            
+            background-image: url('/assets/icon/arrow.png');
+            background-repeat: no-repeat;
+            background-size: 15px 10px;
+
+            width: 15px;
+            height: 10px;
+
+            margin-left: 10px;
+        }
+    }
+
+    .container-text {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        max-width: 1140px;
+        margin: auto;
+        
+        .title {
+            font-size: 40px;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .description {
+            font-weight: 300;
+            letter-spacing: 0.7px;
+            font-size: 20px;
+        }
+
+        .title,
+        .description {
+            color: white;
+            text-shadow: 1px 1px black;
+        }
+    }
+
+    .shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba($color: #000, $alpha: 0.3);
+    }
+
+    .carousel-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+}

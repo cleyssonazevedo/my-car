@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+$height: calc(100vh - 59px);
+$width: 100vw;
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.owl-carousel {
+    position: relative;
+
+    .owl-dots {
+        position: fixed;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+    }
+}
+
+.owl-carousel,
+.owl-carousel .owl-stage-outer .owl-stage,
+.owl-carousel .owl-stage-outer .owl-stage .owl-item,
+.owl-carousel .owl-stage-outer .owl-stage .owl-item .item,
+.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg
+{
+    height: $height;
+    width: $width;
+}
+
+.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+}

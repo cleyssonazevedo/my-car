@@ -16,5 +16,5 @@ export class Car {
 
     sobre: string;
     imagens: string[];
-    telefoneComprador: string;
+    preco: number;
 }
