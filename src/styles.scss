@@ -26,13 +26,19 @@ body {
 .owl-carousel .owl-stage-outer .owl-stage,
 .owl-carousel .owl-stage-outer .owl-stage .owl-item,
 .owl-carousel .owl-stage-outer .owl-stage .owl-item .item,
-.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg
+.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg,
+
+.owl-carousel,
+.owl-carousel .item,
+.owl-carousel .item .bg
 {
     height: $height;
     width: $width;
 }
 
-.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg {
+.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg,
+.owl-carousel .item .bg {
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }

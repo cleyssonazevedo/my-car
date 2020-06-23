@@ -4,6 +4,7 @@
 }
 
 .carousel {
+    margin-top: 59px;
     position: relative;
     
     .btn-explore {
@@ -64,10 +65,19 @@
             font-weight: 300;
             letter-spacing: 0.7px;
             font-size: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-weight: 300;
+            letter-spacing: 0.7px;
+            font-size: 30px;
         }
 
         .title,
-        .description {
+        .description,
+        .price {
             color: white;
             text-shadow: 1px 1px black;
         }

@@ -1,9 +1,9 @@
-import { Directive, ElementRef, OnInit, Renderer2, Input } from '@angular/core';
+import { Directive, ElementRef, OnInit, Renderer2, Input, AfterContentInit } from '@angular/core';
 
 declare const $;
 
 @Directive({ selector: '[appOwlCarousel]' })
-export class OwlCarouselDirective implements OnInit {
+export class OwlCarouselDirective implements AfterContentInit {
     @Input() options: any = {};
 
     constructor(
@@ -11,7 +11,7 @@ export class OwlCarouselDirective implements OnInit {
         private readonly renderer: Renderer2
     ) {  }
 
-    ngOnInit() {
+    ngAfterContentInit(): void {
         this.renderer.addClass(this.el.nativeElement, 'owl-carousel');
         this.renderer.addClass(this.el.nativeElement, 'owl-theme');
 

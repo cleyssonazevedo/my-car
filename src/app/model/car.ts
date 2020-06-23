@@ -17,4 +17,6 @@ export class Car {
     sobre: string;
     imagens: string[];
     preco: number;
+
+    destaque: number | null;
 }
