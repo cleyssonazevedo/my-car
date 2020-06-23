@@ -3,6 +3,13 @@
     margin: auto;
 }
 
+.btn-outline-secondary {
+    &,
+    &:hover {
+        color: white;
+    }
+}
+
 .carousel {
     margin-top: 59px;
     position: relative;
@@ -73,6 +80,12 @@
             font-weight: 300;
             letter-spacing: 0.7px;
             font-size: 30px;
+
+            margin-bottom: 40px;
+        }
+
+        .btn-secondary {
+            // margin-top: ;
         }
 
         .title,
@@ -105,6 +118,8 @@
     margin-top: 65px;
     
     .card {
+        cursor: pointer;
+
         .card-title {
             font-size: 20px;
             letter-spacing: 0.4px;

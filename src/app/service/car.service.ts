@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { switchMap, reduce, toArray, map } from 'rxjs/operators';
+import { switchMap, reduce, map, find } from 'rxjs/operators';
 import { from } from 'rxjs';
 import { Car } from '../model/car';
 
@@ -8,7 +8,7 @@ import { Car } from '../model/car';
 export class CarService {
     constructor(
         private readonly http: HttpClient
-    ) {  }
+    ) { }
 
     getListCars() {
         return this.http.get<Car[]>('/assets/carros.json')
@@ -33,6 +33,16 @@ export class CarService {
                                 return carros;
                             })
                         )
+                )
+            );
+    }
+
+    getCarById(id: number) {
+        return this.http.get<Car[]>('/assets/carros.json')
+            .pipe(
+                switchMap((carros) =>
+                    from(carros)
+                        .pipe(find((carro) => carro.id === id))
                 )
             );
     }

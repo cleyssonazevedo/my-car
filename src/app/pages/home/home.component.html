@@ -10,6 +10,8 @@
                         <div class="title">{{ carro.nome }}</div>
                         <div class="description">{{ carro.descricao }}</div>
                         <div class="price">{{ carro.preco | currency }}</div>
+                        
+                        <a class="btn btn-outline-secondary" [routerLink]="['carro', carro.id]">Ver mais detalhes</a>
                     </div>
                 </div>
             </div>
@@ -56,6 +58,8 @@
                                 <span class="d-block">{{ carro.ano }}</span>
                             </p>
                             <strong class="d-block">{{ carro.preco | currency }}</strong>
+
+                            <a class="btn btn-outline-primary" [routerLink]="['carro', carro.id]">Ver mais detalhes</a>
                         </div>
                     </div>
     

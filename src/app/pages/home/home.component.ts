@@ -28,7 +28,7 @@ export class HomeComponent {
             nav: false,
             dots: false,
             items: 1,
-            autoplay: 10
+            // autoplay: 10
         };
 
         this.route.data.subscribe(({ carros }) => {
