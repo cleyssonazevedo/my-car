@@ -6,6 +6,7 @@ import { OwlCarouselModule } from 'src/app/directives';
 import { ImageModule } from 'src/app/pipe';
 import { HomeResolverService } from './home-resolver.service';
 import { BackgroundImageModule } from 'src/app/pipe/background-image/background-image.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -13,11 +14,12 @@ import { BackgroundImageModule } from 'src/app/pipe/background-image/background-
         OwlCarouselModule,
         ImageModule,
         BackgroundImageModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild([
             {
                 path: '',
                 component: HomeComponent,
-                runGuardsAndResolvers: 'always',
                 resolve: {
                     carros: HomeResolverService
                 }

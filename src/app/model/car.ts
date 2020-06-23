@@ -19,4 +19,6 @@ export class Car {
     preco: number;
 
     destaque: number | null;
+    favoritar: boolean;
+    id: number;
 }

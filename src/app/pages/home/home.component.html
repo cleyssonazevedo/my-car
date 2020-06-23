@@ -1,4 +1,4 @@
-<div class="carousel">
+<div class="carousel" #carousel>
     <div appOwlCarousel [options]="options">
         <div class="item" *ngFor="let carro of destaque">
             <div class="bg" [ngStyle]="{ 'background-image': carro.imagens[0] | background }"></div>
@@ -16,6 +16,61 @@
         </div>
     </div>
     <div class="mini-container carousel-footer">
-        <button type="button" class="btn-explore">Ver mais carros</button>
+        <button type="button" class="btn-explore" (click)="scroll()">Ver mais carros</button>
     </div>
 </div>
+
+<div class="container anuncios" #anuncios>
+    <form class="form mb-4" (click)="filtro()">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-lg"
+                placeholder="Buscar por nome do carro"
+                id="pesquisa"
+                name="pesquisa"
+                [formControl]="pesquisa">
+
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <ng-container *ngIf="carros.length > 0; else pesquisaNaoEncontrada">
+            <div class="col mb-4" *ngFor="let carro of carros">
+                <div class="card">
+                    <img class="card-img-top" [src]="carro.imagens[0]" [alt]="carro.nome">
+                    <div class="card-body">
+                        <div class="card-title bold">
+                            <div class="text-left">
+                                {{ carro.nome }}
+                            </div>
+                            <div class="text-right">
+                                <i class="fa" [class.fa-heart-o]="!carro.favoritar" [class.fa-heart]="carro.favoritar"
+                                    aria-hidden="true" (click)="favoritar(carro)"></i>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <p class="descriptions">
+                                <span>{{ carro.descricao }}</span>
+                                <span class="d-block">{{ carro.ano }}</span>
+                            </p>
+                            <strong class="d-block">{{ carro.preco | currency }}</strong>
+                        </div>
+                    </div>
+    
+                    <div class="card-footer bg-white">
+                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                        São Paulo
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #pesquisaNaoEncontrada>
+    <p class="text-center">
+        Não encontramos resultados para a sua busca.
+    </p>
+</ng-template>
