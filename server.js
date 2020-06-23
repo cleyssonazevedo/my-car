@@ -10,4 +10,4 @@ app.get('/*', (_req, res) => {
 });
 
 console.log('Server started');
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
