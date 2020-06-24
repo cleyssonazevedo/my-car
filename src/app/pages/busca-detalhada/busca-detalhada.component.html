@@ -1,0 +1,121 @@
+<div class="main container">
+    <h1 class="text-center">Busca detalhada</h1>
+    <div class="filtros jumbotron">
+        <form>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="marca">Marca</label>
+                    <select name="marca" id="marca" class="form-control">
+                        <option>Qualquer marca</option>
+                    </select>
+                </div>
+    
+                <div class="form-group col-6">
+                    <label for="ano">Ano</label>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="De">
+                        </div>
+
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="Até">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group col-6">
+                    <label for="ano">Preço</label>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="De">
+                        </div>
+
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="Até">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="cambio">Câmbio</label>
+                    <select name="cambio" id="cambio" class="form-control">
+                        <option>Qualquer câmbio</option>
+                    </select>
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="carroceria">Carroceria</label>
+                    <select name="carroceria" id="carroceria" class="form-control">
+                        <option>Qualquer carroceria</option>
+                    </select>
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="combustivel">Combustível</label>
+                    <select name="combustivel" id="combustivel" class="form-control">
+                        <option>Qualquer combustível</option>
+                    </select>
+                </div>
+    
+                <div class="form-group col-10">
+                    <label for="cor">Cor</label>
+                    <input type="text" class="form-control">
+                </div>
+                    
+                <div class="form-group col-2">
+                    <label for="combustivel">Final da placa</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="">Opcionais</label>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4" *ngFor="let opcional of opcionais">
+                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                <label class="form-check-label" for="gridCheck1">
+                                    {{ opcional }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 text-right mt-5">
+                    <button type="reset" class="btn btn-danger mr-2">Limpar</button>
+                    <button type="submit" class="btn btn-success">Filtrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="carros">
+        <div *ngFor="let carro of carros" class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img [src]="carro.imagens[0]" class="card-img">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ carro.marca }}</strong> {{ carro.modelo }}</h5>
+                        <h6 class="card-subtitle">{{ carro.descricao }}</h6>
+                        
+                        <div class="footer align-middle d-table">
+                            <div class="price d-table-cell">
+                                {{ carro.preco | currency }}
+                            </div>
+
+                            <div class="d-table-cell text-right">
+                                <a class="btn btn-outline-primary" [routerLink]="['/carro', carro.id]">Ver mais detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

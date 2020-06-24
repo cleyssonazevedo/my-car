@@ -10,8 +10,12 @@ export class CarService {
         private readonly http: HttpClient
     ) { }
 
+    getList() {
+        return this.http.get<Car[]>('/assets/carros.json');
+    }
+
     getListCars() {
-        return this.http.get<Car[]>('/assets/carros.json')
+        return this.getList()
             .pipe(
                 switchMap((value) =>
                     from(value)
@@ -38,7 +42,7 @@ export class CarService {
     }
 
     getCarById(id: number) {
-        return this.http.get<Car[]>('/assets/carros.json')
+        return this.getList()
             .pipe(
                 switchMap((carros) =>
                     from(carros)

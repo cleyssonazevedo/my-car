@@ -6,10 +6,12 @@
 
     <div #carousel class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li *ngFor="let image of carro.imagens; let index = index" data-target="#carouselExampleCaptions" [attr.data-slide-to]="index" [class.active]="active === index"></li>
+            <li *ngFor="let image of carro.imagens; let index = index" data-target="#carouselExampleCaptions"
+                [attr.data-slide-to]="index" [class.active]="active === index"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item" *ngFor="let image of carro.imagens; let index = index" [class.active]="active === index">
+            <div class="carousel-item" *ngFor="let image of carro.imagens; let index = index"
+                [class.active]="active === index">
                 <img class="d-block w-100 carousel-image" [src]="image">
             </div>
         </div>
@@ -60,7 +62,7 @@
         </div>
     </div>
 
-    <div class="opcionais text-center">
+    <div class="opcionais">
         <div class="title-opcional d-block text-center">Opcionais</div>
         <div *ngFor="let opcional of carro.opcionais" class="d-inline-block opcional text-center">
             {{ opcional }}
@@ -72,6 +74,8 @@
             {{ carro.preco | currency }}
         </div>
 
-        <a class="btn btn-outline-success btn-lg item" href="whatsapp://send?phone=3464478983">Ver dados do comprador</a>
+        <a class="btn btn-outline-success btn-lg item" href="whatsapp://tel:3216541234">
+            Ver dados do comprador
+        </a>
     </div>
 </div>

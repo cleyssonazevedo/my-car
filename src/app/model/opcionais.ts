@@ -1,5 +1,5 @@
 
-const opcionais =  [
+export const listOpcionais =  [
     'Airbag',
     'Alarme',
     'Ar condicionado',
