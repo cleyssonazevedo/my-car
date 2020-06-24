@@ -1,4 +1,4 @@
-<div class="carousel" #carousel>
+<div class="carousel main" #carousel>
     <div appOwlCarousel [options]="options">
         <div class="item" *ngFor="let carro of destaque">
             <div class="bg" [ngStyle]="{ 'background-image': carro.imagens[0] | background }"></div>
@@ -7,7 +7,7 @@
             <div class="container-text">
                 <div class="d-table h-100">
                     <div class="d-table-cell align-middle">
-                        <div class="title">{{ carro.nome }}</div>
+                        <div class="title"><strong>{{ carro.marca }}</strong> {{ carro.modelo }}</div>
                         <div class="description">{{ carro.descricao }}</div>
                         <div class="price">{{ carro.preco | currency }}</div>
                         
@@ -41,11 +41,11 @@
         <ng-container *ngIf="carros.length > 0; else pesquisaNaoEncontrada">
             <div class="col mb-4" *ngFor="let carro of carros">
                 <div class="card">
-                    <img class="card-img-top" [src]="carro.imagens[0]" [alt]="carro.nome">
+                    <img class="card-img-top" [src]="carro.imagens[0]" alt="{{ carro.marca }} {{ carro.modelo }}">
                     <div class="card-body">
                         <div class="card-title bold">
                             <div class="text-left">
-                                {{ carro.nome }}
+                                {{ carro.marca }} {{ carro.modelo }}
                             </div>
                             <div class="text-right">
                                 <i class="fa" [class.fa-heart-o]="!carro.favoritar" [class.fa-heart]="carro.favoritar"

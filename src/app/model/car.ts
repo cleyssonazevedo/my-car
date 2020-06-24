@@ -1,5 +1,6 @@
 export class Car {
-    nome: string;
+    marca: string;
+    modelo: string;
     descricao: string;
     km: number;
     ano: string;

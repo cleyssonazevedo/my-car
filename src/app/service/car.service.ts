@@ -17,7 +17,7 @@ export class CarService {
                     from(value)
                         .pipe(
                             reduce((carros, item) => {
-                                item.favoritar = localStorage.getItem(`${item.nome}-${item.id}`) === '0';
+                                item.favoritar = localStorage.getItem(`${item.marca}&${item.modelo}-${item.id}`) === '0';
 
                                 if (item.destaque) {
                                     carros.destaque.push(item);

@@ -1,0 +1,65 @@
+.title {
+    padding-top: 50px;
+}
+
+.carousel-image {
+    height: 600px;
+    object-fit: cover;
+}
+
+.detalhes {
+    margin-top: 40px;
+
+    .text-group {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        width: 33.33333%;
+        margin-bottom: 30px;
+
+        .label {
+            font-weight: 600;
+        }
+
+        .value {
+            font-weight: 300;
+        }
+    }
+}
+
+.opcionais {
+    margin-top: 20px;
+
+    .title-opcional {
+        font-size: 30px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        margin-bottom: 40px;
+    }
+
+    .opcional {
+        width: 30%;
+        margin-bottom: 20px;
+    }
+}
+
+.preco-carro {
+    display: table;
+    width: 100%;
+    margin-top: 40px;
+    vertical-align: middle;
+
+    .item {
+        display: table-cell;
+    }
+
+    .preco {
+        font-size: 35px;
+        font-weight: 300;
+        letter-spacing: 0.7px;  
+    }
+
+    .btn {
+        width: 276px;
+    }
+}

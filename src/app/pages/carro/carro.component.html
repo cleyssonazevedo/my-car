@@ -1,15 +1,77 @@
-<div class="carousel" #carousel>
-    <div appOwlCarousel [options]="options">
-        <div class="item" *ngFor="let imagem of carro.imagens">
-            <div class="bg" [ngStyle]="{ 'background-image': imagem | background }"></div>
-            <div class="shadow"></div>
+<div class="container main">
+    <div class="title">
+        <h1><strong>{{ carro.marca }}</strong> {{ carro.modelo }}</h1>
+        <h2>{{ carro.descricao }}</h2>
+    </div>
+
+    <div #carousel class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li *ngFor="let image of carro.imagens; let index = index" data-target="#carouselExampleCaptions" [attr.data-slide-to]="index" [class.active]="active === index"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let image of carro.imagens; let index = index" [class.active]="active === index">
+                <img class="d-block w-100 carousel-image" [src]="image">
+            </div>
+        </div>
+        <a class="carousel-control-prev" role="button" data-slide="Anterior" (click)="active = active - 1">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" role="button" data-slide="Próximo" (click)="active = active + 1">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
+
+    <div class="detalhes">
+        <div class="text-group">
+            <div class="label">KM</div>
+            <div class="d-block value">{{ carro.km | number }}</div>
+        </div>
+
+        <div class="text-group">
+            <div class="label">Ano</div>
+            <div class="d-block value">{{ carro.ano }}</div>
+        </div>
+
+        <div class="text-group">
+            <div class="label">Câmbio</div>
+            <div class="d-block value">{{ carro.cambio }}</div>
+        </div>
+
+        <div class="text-group">
+            <div class="label">Carroceria</div>
+            <div class="d-block value">{{ carro.carroceria }}</div>
+        </div>
+
+        <div class="text-group">
+            <div class="label">Final da placa</div>
+            <div class="d-block value">{{ carro.finalDaPlaca }}</div>
+        </div>
+
+        <div class="text-group">
+            <div class="label">Combustível</div>
+            <div class="d-block value">{{ carro.combustivel }}</div>
+        </div>
+
+        <div class="text-group">
+            <div class="label">Cor</div>
+            <div class="d-block value">{{ carro.cor }}</div>
         </div>
     </div>
-    <div class="mini-container carousel-footer">
-        <button type="button" class="btn-explore" (click)="scroll()">Ver mais detalhes</button>
+
+    <div class="opcionais text-center">
+        <div class="title-opcional d-block text-center">Opcionais</div>
+        <div *ngFor="let opcional of carro.opcionais" class="d-inline-block opcional text-center">
+            {{ opcional }}
+        </div>
     </div>
-</div>
 
-<div class="container anuncio" #anuncio>
+    <div class="preco-carro">
+        <div class="item preco">
+            {{ carro.preco | currency }}
+        </div>
 
+        <a class="btn btn-outline-success btn-lg item" href="whatsapp://send?phone=3464478983">Ver dados do comprador</a>
+    </div>
 </div>

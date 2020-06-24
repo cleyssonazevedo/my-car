@@ -10,20 +10,13 @@ import { Car } from 'src/app/model/car';
 export class CarroComponent {
     @ViewChild('anuncio')
     private readonly viewAnuncio: ElementRef;
-    options: any;
 
     carro: Car;
+    active = 0;
 
     constructor(
         readonly route: ActivatedRoute
     ) {
-        this.options = {
-            loop: true,
-            nav: false,
-            dots: false,
-            items: 1
-        };
-
         this.route.data.subscribe(({ carro }) => this.carro = carro);
     }
 

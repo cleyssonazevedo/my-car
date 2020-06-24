@@ -22,18 +22,31 @@ body {
     }
 }
 
-.owl-carousel,
-.owl-carousel .owl-stage-outer .owl-stage,
-.owl-carousel .owl-stage-outer .owl-stage .owl-item,
-.owl-carousel .owl-stage-outer .owl-stage .owl-item .item,
-.owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg,
+.owl-carousel:not(.container-width) {
+    &,
+    & .owl-stage-outer .owl-stage,
+    & .owl-stage-outer .owl-stage .owl-item,
+    & .owl-stage-outer .owl-stage .owl-item .item,
+    & .owl-stage-outer .owl-stage .owl-item .item .bg,
 
-.owl-carousel,
-.owl-carousel .item,
-.owl-carousel .item .bg
-{
-    height: $height;
-    width: $width;
+    & .item,
+    & .item .bg {
+        height: $height;
+        width: $width;
+    }
+}
+
+.owl-carousel.container-width {
+    &,
+    & .owl-stage-outer .owl-stage,
+    & .owl-stage-outer .owl-stage .owl-item,
+    & .owl-stage-outer .owl-stage .owl-item .item,
+    & .owl-stage-outer .owl-stage .owl-item .item .bg,
+
+    & .item,
+    & .item .bg {
+        height: 400px;
+    }
 }
 
 .owl-carousel .owl-stage-outer .owl-stage .owl-item .item .bg,
@@ -41,4 +54,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+// Todas as páginas ficam maior que o header
+.main {
+    margin-top: 59px;
 }

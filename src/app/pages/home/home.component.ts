@@ -28,7 +28,7 @@ export class HomeComponent {
             nav: false,
             dots: false,
             items: 1,
-            // autoplay: 10
+            autoplay: 10
         };
 
         this.route.data.subscribe(({ carros }) => {
@@ -50,14 +50,16 @@ export class HomeComponent {
 
     favoritar(car: Car) {
         car.favoritar = !car.favoritar;
-        localStorage.setItem(`${car.nome}-${car.id}`, car.favoritar ? '0' : '1');
+        localStorage.setItem(`${car.marca}&${car.modelo}-${car.id}`, car.favoritar ? '0' : '1');
     }
 
     filtro() {
         if (this.pesquisa.value) {
+            const regex = new RegExp(this.pesquisa.value, 'i');
+
             const data = this.originalCarros
-                .filter((item) => new RegExp(this.pesquisa.value, 'i').test(item.nome));
-            console.log(data);
+                .filter((item) => regex.test(item.marca) || regex.test(item.modelo));
+
             this.carros = data;
         } else {
             this.carros = this.originalCarros;
