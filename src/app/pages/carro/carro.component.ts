@@ -30,18 +30,22 @@ export class CarroComponent {
     }
 
     prev() {
-        if (this.active === 0) {
+        const prev = this.active - 1;
+
+        if (prev < 0) {
             this.active = this.carro.imagens.length - 1;
         } else {
-            this.active = this.active--;
+            this.active = prev;
         }
     }
 
     next() {
-        if (this.carro.imagens.length - 1 === this.active) {
+        const next = this.active + 1;
+
+        if (next === this.carro.imagens.length) {
             this.active = 0;
         } else {
-            this.active = this.active++;
+            this.active = next;
         }
     }
 
