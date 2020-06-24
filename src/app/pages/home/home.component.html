@@ -41,7 +41,7 @@
         <ng-container *ngIf="carros.length > 0; else pesquisaNaoEncontrada">
             <div class="col mb-4" *ngFor="let carro of carros">
                 <div class="card">
-                    <img class="card-img-top" [src]="carro.imagens[0]" alt="{{ carro.marca }} {{ carro.modelo }}">
+                    <img class="card-img-top height-200" [src]="carro.imagens[0]" alt="{{ carro.marca }} {{ carro.modelo }}">
                     <div class="card-body">
                         <div class="card-title bold">
                             <div class="text-left">
