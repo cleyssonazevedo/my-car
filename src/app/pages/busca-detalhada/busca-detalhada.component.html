@@ -1,82 +1,99 @@
 <div class="main container">
     <h1 class="text-center">Busca detalhada</h1>
     <div class="filtros jumbotron">
-        <form>
+        <form [formGroup]="group" (submit)="enviarDados()" (reset)="limparDados()">
             <div class="row">
                 <div class="form-group col-12">
                     <label for="marca">Marca</label>
-                    <select name="marca" id="marca" class="form-control">
-                        <option>Qualquer marca</option>
+                    <select name="marca" id="marca" class="form-control" formControlName="marca">
+                        <option [value]="null">Qualquer marca</option>
+                        <option *ngFor="let marca of filtros.marcas" [value]="marca">
+                            {{ marca }}
+                        </option>
                     </select>
                 </div>
     
-                <div class="form-group col-6">
+                <div class="form-group col-sm-6 col-12">
                     <label for="ano">Ano</label>
                     
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="De">
+                            <input type="text" class="form-control" placeholder="De"  formControlName="anoDe">
                         </div>
 
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Até">
+                            <input type="text" class="form-control" placeholder="Até"  formControlName="anoAte">
                         </div>
                     </div>
                 </div>
     
-                <div class="form-group col-6">
+                <div class="form-group col-sm-6 col-12">
                     <label for="ano">Preço</label>
                     
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="De">
+                            <input type="number" class="form-control" placeholder="De" min="0"  formControlName="precoDe">
                         </div>
 
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Até">
+                            <input type="number" class="form-control" placeholder="Até" min="0"  formControlName="precoAte">
                         </div>
                     </div>
                 </div>
     
-                <div class="form-group col-4">
+                <div class="form-group col-sm-4 col-12">
                     <label for="cambio">Câmbio</label>
-                    <select name="cambio" id="cambio" class="form-control">
-                        <option>Qualquer câmbio</option>
+                    <select name="cambio" id="cambio" class="form-control" formControlName="cambio">
+                        <option [value]="null">Qualquer câmbio</option>
+                        <option *ngFor="let cambio of filtros.cambios" [value]="cambio">
+                            {{ cambio }}
+                        </option>
                     </select>
                 </div>
     
-                <div class="form-group col-4">
+                <div class="form-group col-sm-4 col-12">
                     <label for="carroceria">Carroceria</label>
-                    <select name="carroceria" id="carroceria" class="form-control">
-                        <option>Qualquer carroceria</option>
+                    <select name="carroceria" id="carroceria" class="form-control" formControlName="carroceria">
+                        <option [value]="null">Qualquer carroceria</option>
+                        <option *ngFor="let carroceria of filtros.carrocerias" [value]="carroceria">
+                            {{ carroceria }}
+                        </option>
                     </select>
                 </div>
     
-                <div class="form-group col-4">
+                <div class="form-group col-sm-4 col-12">
                     <label for="combustivel">Combustível</label>
-                    <select name="combustivel" id="combustivel" class="form-control">
-                        <option>Qualquer combustível</option>
+                    <select name="combustivel" id="combustivel" class="form-control" formControlName="combustivel">
+                        <option [value]="null">Qualquer combustível</option>
+                        <option *ngFor="let combustivel of filtros.combustiveis" [value]="combustivel">
+                            {{ combustivel }}
+                        </option>
                     </select>
                 </div>
     
-                <div class="form-group col-10">
+                <div class="form-group col-lg-10 col-md-9">
                     <label for="cor">Cor</label>
-                    <input type="text" class="form-control">
+                    <select name="cor" id="cor" class="form-control" formControlName="cor">
+                        <option [value]="null">Qualquer cor</option>
+                        <option *ngFor="let cor of filtros.cores" [value]="cor">
+                            {{ cor }}
+                        </option>
+                    </select>
                 </div>
                     
-                <div class="form-group col-2">
+                <div class="form-group col-lg-2 col-md-3">
                     <label for="combustivel">Final da placa</label>
-                    <input type="text" class="form-control">
+                    <input type="number" min="0" max="9" class="form-control" formControlName="finalPlaca" maxlength="1">
                 </div>
 
                 <div class="form-group col-12">
-                    <label for="">Opcionais</label>
+                    <label>Opcionais</label>
 
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-4" *ngFor="let opcional of opcionais">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
+                        <div class="row">                            
+                            <div class="col-md-4 col-sm-6 col-12" *ngFor="let opcional of opcionais;" >
+                                <input class="form-check-input" type="checkbox" [id]="opcional" [value]="groupOpcionais[opcional]" (change)="groupOpcionais[opcional] = !groupOpcionais[opcional]">
+                                <label class="form-check-label" [for]="opcional" [attr.name]="opcional">
                                     {{ opcional }}
                                 </label>
                             </div>
@@ -86,36 +103,49 @@
 
                 <div class="col-12 text-right mt-5">
                     <button type="reset" class="btn btn-danger mr-2">Limpar</button>
-                    <button type="submit" class="btn btn-success">Filtrar</button>
+                    <button type="submit" class="btn btn-success" [class.disabled]="group.invalid" [disabled]="group.invalid">Filtrar</button>
                 </div>
             </div>
         </form>
     </div>
 
     <div class="carros">
-        <div *ngFor="let carro of carros" class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img [src]="carro.imagens[0]" class="card-img">
-                </div>
+        <ng-container *ngIf="carros && carros.length > 0; else nenhumCarroEncontrado">
+            <div *ngFor="let carro of carros" class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img [src]="carro.imagens[0]" class="card-img">
+                    </div>
+    
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>{{ carro.marca }}</strong> {{ carro.modelo }}</h5>
+                            <h6 class="card-subtitle">{{ carro.descricao }}</h6>
 
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>{{ carro.marca }}</strong> {{ carro.modelo }}</h5>
-                        <h6 class="card-subtitle">{{ carro.descricao }}</h6>
-                        
-                        <div class="footer align-middle d-table">
-                            <div class="price d-table-cell">
-                                {{ carro.preco | currency }}
+                            <div class="card-text mt-4">
+                                <strong>Ano: </strong> {{ carro.ano }}
                             </div>
-
-                            <div class="d-table-cell text-right">
-                                <a class="btn btn-outline-primary" [routerLink]="['/carro', carro.id]">Ver mais detalhes</a>
+                            
+                            <div class="footer align-middle d-sm-table">
+                                <div class="price d-table-cell">
+                                    {{ carro.preco | currency }}
+                                </div>
+    
+                                <div class="d-sm-table-cell text-sm-right mt-sm-0 mt-2">
+                                    <a class="btn btn-outline-primary" [routerLink]="['/carro', carro.id]">Ver mais detalhes</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-container>
     </div>
 </div>
+
+<ng-template #nenhumCarroEncontrado>
+    <p class="text-muted text-center">
+        Nenhum carro encontrado para a sua pesquisa.<br>
+        Tente novamente com outras opções
+    </p>
+</ng-template>
